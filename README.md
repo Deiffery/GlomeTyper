@@ -1,6 +1,6 @@
 <p align="center">
     <h1 align="center">Glome Typer</h1>
-    <h3 align="center">Simple Auto Typer with delay.</h3>
+    <h3 align="center">Simple Auto Typer with delay.</a>
 </p>
         
 [![downloads](https://img.shields.io/github/commit-activity/m/Deiffery/GlomeTyper?logo=github)](https://github.com/Deiffery/GlomeTyper)
