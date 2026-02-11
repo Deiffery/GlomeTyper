@@ -5,6 +5,7 @@ import net.deiffery.glometyper.GlomeTyperBot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class Main {
 
@@ -56,5 +57,7 @@ public class Main {
         frame.add(buttonStop);
         frame.add(labelDelay);
         frame.add(textFieldDelay);
+        Image icon = new ImageIcon("src/main/java/net/deiffery/resources/icon/icon.png").getImage();
+        frame.setIconImage(icon);
     }
 }
