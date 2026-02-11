@@ -5,13 +5,13 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseInputListener;
 
+import javax.tools.Tool;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 public class GlomeTyperBot implements NativeMouseInputListener {
 
     private final Robot robot;
@@ -48,22 +48,20 @@ public class GlomeTyperBot implements NativeMouseInputListener {
 
     private void typeWithDelay(String text, int delay) throws  InterruptedException {
         for(char ch : text.toCharArray()){
-            typeChar(ch);
-            Thread.sleep(delay);
+            if(enabled.get()){
+                typeChar(ch);
+                Thread.sleep(delay);
+            }
         }
     }
 
     private void typeChar(char ch) {
-        boolean upper = Character.isUpperCase(ch);
-        int keyCode = KeyEvent.getExtendedKeyCodeForChar(ch);
-        if(keyCode == KeyEvent.VK_UNDEFINED) {
-            System.out.println("Can't type character: " + ch);
-            return;
-        }
-        if(upper) robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(keyCode);
-        robot.keyRelease(keyCode);
-        if(upper) robot.keyRelease(KeyEvent.VK_SHIFT);
+        StringSelection stringSelection = new StringSelection(String.valueOf(ch));
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
     }
 
     public void start(){

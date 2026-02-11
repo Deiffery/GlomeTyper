@@ -1,11 +1,9 @@
 package net.deiffery.glometyper;
 
 import com.github.kwhat.jnativehook.NativeHookException;
-import net.deiffery.glometyper.GlomeTyperBot;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class Main {
 
@@ -15,9 +13,7 @@ public class Main {
         JFrame frame = new JFrame("GlomeTyper");
         try {
             bot = new GlomeTyperBot("", 0);
-        } catch (NativeHookException e) {
-            throw new RuntimeException(e);
-        } catch (AWTException e) {
+        } catch (NativeHookException | AWTException e) {
             throw new RuntimeException(e);
         }
         frame.setSize(350,200);
@@ -57,7 +53,7 @@ public class Main {
         frame.add(buttonStop);
         frame.add(labelDelay);
         frame.add(textFieldDelay);
-        Image icon = new ImageIcon("src/main/java/net/deiffery/resources/icon/icon.png").getImage();
+        Image icon = new ImageIcon("src/main/resources/icon/icon.png").getImage();
         frame.setIconImage(icon);
     }
 }
