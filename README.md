@@ -3,7 +3,7 @@
     <h1 align="center">Glome Typer</h1>
     <h3 align="center">Simple Auto Typer with delay.</a>
 </p>
-        https://github.com/Deiffery/glome-pack/
+        
 [![downloads](https://img.shields.io/github/commit-activity/m/Deiffery/GlomeTyper?logo=github)](https://github.com/Deiffery/GlomeTyper)
 
 # About Glome Typer...
