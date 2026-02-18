@@ -78,7 +78,7 @@ public class Main extends JFrame {
         frame.setVisible(true);
         frame.setResizable(false);
         renderFrameComponents(frame);
-        Image icon = new ImageIcon("src/main/resources/icon/icon.png").getImage();
+        Image icon = new ImageIcon(Main.class.getResource("/icon/icon.png")).getImage();
         frame.setIconImage(icon);
     }
 
