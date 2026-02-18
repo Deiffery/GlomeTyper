@@ -5,7 +5,7 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseInputListener;
 
-import javax.tools.Tool;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -15,17 +15,18 @@ import java.util.logging.Logger;
 public class GlomeTyperBot implements NativeMouseInputListener {
 
     private final Robot robot;
+    private final JFrame frame;
     private String text;
-
     private int delay;
 
     private final AtomicBoolean enabled = new AtomicBoolean(false);
 
-    public GlomeTyperBot(String text, int delay) throws AWTException, NativeHookException {
+    public GlomeTyperBot(String text, int delay, JFrame frame) throws AWTException, NativeHookException {
         this.robot = new Robot();
         this.text = text;
         this.robot.setAutoDelay(40);
         this.delay = delay;
+        this.frame = frame;
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
         logger.setLevel(Level.OFF);
         logger.setUseParentHandlers(false);
@@ -93,7 +94,7 @@ public class GlomeTyperBot implements NativeMouseInputListener {
                 Thread.sleep(120);
                 typeWithDelay(text, delay);
             } catch (Exception e){
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(frame, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
